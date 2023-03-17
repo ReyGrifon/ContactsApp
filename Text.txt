@@ -1,1 +1,2 @@
 This is some text
+I wrote this text
