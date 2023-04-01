@@ -242,6 +242,7 @@
             BackColor = Color.White;
             ClientSize = new Size(511, 343);
             Controls.Add(MaintableLayoutPanel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "ContactForm";
             ShowIcon = false;

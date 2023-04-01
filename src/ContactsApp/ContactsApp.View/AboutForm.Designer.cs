@@ -226,6 +226,7 @@
             BackColor = Color.White;
             ClientSize = new Size(511, 400);
             Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "AboutForm";
             ShowIcon = false;
