@@ -162,9 +162,10 @@
             ClosePanel.BackColor = Color.WhiteSmoke;
             ClosePanel.Controls.Add(CloseFormButton);
             ClosePanel.Dock = DockStyle.Fill;
-            ClosePanel.Location = new Point(3, 356);
+            ClosePanel.Location = new Point(0, 353);
+            ClosePanel.Margin = new Padding(0);
             ClosePanel.Name = "ClosePanel";
-            ClosePanel.Size = new Size(505, 41);
+            ClosePanel.Size = new Size(511, 47);
             ClosePanel.TabIndex = 0;
             // 
             // CloseFormButton
