@@ -101,6 +101,7 @@
             // 
             // DateOfBirthTimePicker
             // 
+            DateOfBirthTimePicker.CalendarMonthBackground = Color.White;
             DateOfBirthTimePicker.Location = new Point(117, 189);
             DateOfBirthTimePicker.Name = "DateOfBirthTimePicker";
             DateOfBirthTimePicker.Size = new Size(180, 23);
@@ -109,6 +110,7 @@
             // 
             // VKTextBox
             // 
+            VKTextBox.BackColor = Color.White;
             VKTextBox.Location = new Point(117, 241);
             VKTextBox.Name = "VKTextBox";
             VKTextBox.Size = new Size(180, 23);
@@ -136,6 +138,7 @@
             // 
             // PhoneNumberTextBox
             // 
+            PhoneNumberTextBox.BackColor = Color.White;
             PhoneNumberTextBox.Location = new Point(117, 135);
             PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             PhoneNumberTextBox.Size = new Size(180, 23);
@@ -154,6 +157,7 @@
             // 
             // EmailTextBox
             // 
+            EmailTextBox.BackColor = Color.White;
             EmailTextBox.Location = new Point(117, 81);
             EmailTextBox.Margin = new Padding(3, 3, 11, 3);
             EmailTextBox.Name = "EmailTextBox";
@@ -173,7 +177,7 @@
             // 
             // FullNameTextBox
             // 
-            FullNameTextBox.BackColor = Color.FromArgb(245, 245, 255);
+            FullNameTextBox.BackColor = Color.White;
             FullNameTextBox.Location = new Point(117, 27);
             FullNameTextBox.Margin = new Padding(3, 3, 11, 3);
             FullNameTextBox.Name = "FullNameTextBox";
