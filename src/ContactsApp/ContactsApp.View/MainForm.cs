@@ -82,5 +82,16 @@ namespace ContactsApp.View
                 form.ShowDialog();
             }
         }
+
+        private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            var form = new ContactForm();
+            form.ShowDialog();
+        }
     }
 }

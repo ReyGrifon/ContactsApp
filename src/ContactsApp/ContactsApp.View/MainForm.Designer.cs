@@ -40,7 +40,7 @@
             ContactsListBox = new ListBox();
             ContactInfoPanel = new Panel();
             BirthdayPanel = new Panel();
-            BirthdayPanelCloseButton = new Button();
+            BirthdayPanelCloseButton = new PictureBox();
             BirthdaySurnamesLabel = new Label();
             BirthdayListLabel = new Label();
             NotifyPictureBox = new PictureBox();
@@ -63,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)RemoveContactButton).BeginInit();
             ContactInfoPanel.SuspendLayout();
             BirthdayPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NotifyPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).BeginInit();
             SuspendLayout();
@@ -80,7 +81,7 @@
             MainTableLayoutPanel.Name = "MainTableLayoutPanel";
             MainTableLayoutPanel.RowCount = 1;
             MainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            MainTableLayoutPanel.Size = new Size(800, 450);
+            MainTableLayoutPanel.Size = new Size(786, 443);
             MainTableLayoutPanel.TabIndex = 0;
             // 
             // ContactListPanel
@@ -92,7 +93,7 @@
             ContactListPanel.Dock = DockStyle.Fill;
             ContactListPanel.Location = new Point(3, 3);
             ContactListPanel.Name = "ContactListPanel";
-            ContactListPanel.Size = new Size(232, 444);
+            ContactListPanel.Size = new Size(232, 437);
             ContactListPanel.TabIndex = 0;
             // 
             // ButtonsTableLayoutPanel
@@ -105,7 +106,7 @@
             ButtonsTableLayoutPanel.Controls.Add(EditContactButton, 1, 0);
             ButtonsTableLayoutPanel.Controls.Add(AddContactButton, 0, 0);
             ButtonsTableLayoutPanel.Controls.Add(RemoveContactButton, 2, 0);
-            ButtonsTableLayoutPanel.Location = new Point(3, 406);
+            ButtonsTableLayoutPanel.Location = new Point(3, 399);
             ButtonsTableLayoutPanel.Name = "ButtonsTableLayoutPanel";
             ButtonsTableLayoutPanel.RowCount = 1;
             ButtonsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -122,6 +123,7 @@
             EditContactButton.SizeMode = PictureBoxSizeMode.CenterImage;
             EditContactButton.TabIndex = 3;
             EditContactButton.TabStop = false;
+            EditContactButton.Click += EditContactButton_Click;
             EditContactButton.MouseEnter += EditContactButton_MouseEnter;
             EditContactButton.MouseLeave += EditContactButton_MouseLeave;
             // 
@@ -177,7 +179,7 @@
             ContactsListBox.Items.AddRange(new object[] { "Никита Буянов", "Тодд Говард", "Фил Спенсер", "Хидэо Кодзима", "Гейб Ньюэлл", "Хидэтака Миядзаки", "Кан Гао", "Уильям Пеллен", "Кристофер Ларкин", "Бобби Котик" });
             ContactsListBox.Location = new Point(3, 32);
             ContactsListBox.Name = "ContactsListBox";
-            ContactsListBox.Size = new Size(226, 374);
+            ContactsListBox.Size = new Size(226, 367);
             ContactsListBox.TabIndex = 0;
             // 
             // ContactInfoPanel
@@ -197,7 +199,7 @@
             ContactInfoPanel.Dock = DockStyle.Fill;
             ContactInfoPanel.Location = new Point(241, 3);
             ContactInfoPanel.Name = "ContactInfoPanel";
-            ContactInfoPanel.Size = new Size(556, 444);
+            ContactInfoPanel.Size = new Size(542, 437);
             ContactInfoPanel.TabIndex = 1;
             // 
             // BirthdayPanel
@@ -208,23 +210,22 @@
             BirthdayPanel.Controls.Add(BirthdaySurnamesLabel);
             BirthdayPanel.Controls.Add(BirthdayListLabel);
             BirthdayPanel.Controls.Add(NotifyPictureBox);
-            BirthdayPanel.Location = new Point(3, 361);
+            BirthdayPanel.Location = new Point(3, 354);
             BirthdayPanel.Name = "BirthdayPanel";
-            BirthdayPanel.Size = new Size(550, 80);
+            BirthdayPanel.Size = new Size(536, 80);
             BirthdayPanel.TabIndex = 11;
             // 
             // BirthdayPanelCloseButton
             // 
             BirthdayPanelCloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BirthdayPanelCloseButton.FlatAppearance.BorderSize = 0;
-            BirthdayPanelCloseButton.FlatStyle = FlatStyle.Flat;
-            BirthdayPanelCloseButton.ForeColor = SystemColors.ControlDarkDark;
             BirthdayPanelCloseButton.Image = Properties.Resources.close_32x32;
-            BirthdayPanelCloseButton.Location = new Point(515, 3);
+            BirthdayPanelCloseButton.Location = new Point(501, 3);
             BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
             BirthdayPanelCloseButton.Size = new Size(32, 32);
+            BirthdayPanelCloseButton.SizeMode = PictureBoxSizeMode.CenterImage;
             BirthdayPanelCloseButton.TabIndex = 15;
-            BirthdayPanelCloseButton.UseVisualStyleBackColor = true;
+            BirthdayPanelCloseButton.TabStop = false;
+            BirthdayPanelCloseButton.Click += BirthdayPanelCloseButton_Click;
             // 
             // BirthdaySurnamesLabel
             // 
@@ -233,9 +234,9 @@
             BirthdaySurnamesLabel.ForeColor = Color.FromArgb(0, 144, 255);
             BirthdaySurnamesLabel.Location = new Point(81, 43);
             BirthdaySurnamesLabel.Name = "BirthdaySurnamesLabel";
-            BirthdaySurnamesLabel.Size = new Size(221, 15);
+            BirthdaySurnamesLabel.Size = new Size(171, 15);
             BirthdaySurnamesLabel.TabIndex = 14;
-            BirthdaySurnamesLabel.Text = "Абакумов, Бондарева, Смирнов и др.";
+            BirthdaySurnamesLabel.Text = "Буянов, Ларкин, Котик и др.";
             // 
             // BirthdayListLabel
             // 
@@ -260,6 +261,7 @@
             // 
             // VKTextBox
             // 
+            VKTextBox.BackColor = Color.White;
             VKTextBox.Location = new Point(109, 240);
             VKTextBox.Name = "VKTextBox";
             VKTextBox.Size = new Size(181, 23);
@@ -278,6 +280,7 @@
             // 
             // DateOfBirthTextBox
             // 
+            DateOfBirthTextBox.BackColor = Color.White;
             DateOfBirthTextBox.Location = new Point(109, 186);
             DateOfBirthTextBox.Name = "DateOfBirthTextBox";
             DateOfBirthTextBox.Size = new Size(181, 23);
@@ -296,6 +299,7 @@
             // 
             // PhoneNumberTextBox
             // 
+            PhoneNumberTextBox.BackColor = Color.White;
             PhoneNumberTextBox.Location = new Point(109, 132);
             PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             PhoneNumberTextBox.Size = new Size(181, 23);
@@ -316,9 +320,10 @@
             // EmailTextBox
             // 
             EmailTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            EmailTextBox.BackColor = Color.White;
             EmailTextBox.Location = new Point(109, 78);
             EmailTextBox.Name = "EmailTextBox";
-            EmailTextBox.Size = new Size(444, 23);
+            EmailTextBox.Size = new Size(430, 23);
             EmailTextBox.TabIndex = 4;
             EmailTextBox.Text = "Buyanov@mail.ru";
             EmailTextBox.KeyPress += EmailTextBox_KeyPress;
@@ -336,10 +341,10 @@
             // FullNameTextBox
             // 
             FullNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            FullNameTextBox.BackColor = Color.FromArgb(245, 245, 255);
+            FullNameTextBox.BackColor = Color.White;
             FullNameTextBox.Location = new Point(109, 24);
             FullNameTextBox.Name = "FullNameTextBox";
-            FullNameTextBox.Size = new Size(444, 23);
+            FullNameTextBox.Size = new Size(430, 23);
             FullNameTextBox.TabIndex = 2;
             FullNameTextBox.Text = "Буянов Никита";
             FullNameTextBox.KeyPress += FullNameTextBox_KeyPress;
@@ -368,7 +373,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(786, 443);
             Controls.Add(MainTableLayoutPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
@@ -386,6 +391,7 @@
             ContactInfoPanel.PerformLayout();
             BirthdayPanel.ResumeLayout(false);
             BirthdayPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)NotifyPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).EndInit();
             ResumeLayout(false);
@@ -412,12 +418,12 @@
         private Label FullNameLabel;
         private PictureBox PhotoPictureBox;
         private Panel BirthdayPanel;
-        private Button BirthdayPanelCloseButton;
         private Label BirthdaySurnamesLabel;
         private Label BirthdayListLabel;
         private PictureBox NotifyPictureBox;
         private PictureBox EditContactButton;
         private PictureBox AddContactButton;
         private PictureBox RemoveContactButton;
+        private PictureBox BirthdayPanelCloseButton;
     }
 }
