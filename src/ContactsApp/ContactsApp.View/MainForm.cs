@@ -85,7 +85,8 @@ namespace ContactsApp.View
 
         private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
         {
-
+            //BirthdayPanel.Controls.Clear();
+            BirthdayPanel.Hide();
         }
 
         private void EditContactButton_Click(object sender, EventArgs e)
