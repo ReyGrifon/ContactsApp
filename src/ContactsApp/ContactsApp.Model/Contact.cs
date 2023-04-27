@@ -8,20 +8,44 @@ using System.Xml.Linq;
 
 namespace ContactsApp.Model
 {
+    /// <summary>
+    /// класс Contact
+    /// </summary>
     internal class Contact : ICloneable
     {
+        /// <summary>
+        /// Фамилия и Имя
+        /// </summary>
         private string _fullName;
 
+        /// <summary>
+        /// Дата рождения 
+        /// </summary>
         private DateTime _dateOfBirth;
 
+        /// <summary>
+        /// номер телефона 
+        /// </summary>
         private string _phoneNumber;
 
+        /// <summary>
+        /// Id  в VK
+        /// </summary>
         private string _vkId;
 
+        /// <summary>
+        /// электронная почта 
+        /// </summary>
         private string _email;
 
+        /// <summary>
+        /// Шаблон номера телефона +7(999)845-11-22 или 8(888)555-33-22
+        /// </summary>
         private string _phoneNumberRegex = @"(^[+]?[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})";
 
+        /// <summary>
+        /// Возвращает или задаёт имя 
+        /// </summary>
         public string FullName
         { 
             get 
@@ -32,16 +56,25 @@ namespace ContactsApp.Model
             { 
                 if (value.Length <= 0)
                 {
-                    throw new ArgumentException("Name can't be less 0 symbols");
+                    throw new ArgumentException("Name can't be equal or less than 0 symbols");
                 }
                 if (value.Length > 100)
                 {
-                    throw new ArgumentException("Name can't be longer to 100 symbols");
+                    throw new ArgumentException("Name can't be longer than 100 symbols");
+                }
+                string normalFullName = "";
+                string[] words = value.Split(" ");
+                foreach (string word in words)
+                {
+                    normalFullName = word[0].ToString().ToUpper() + word.Substring(1) + " ";
                 }
                 _fullName = value;
             } 
         }
 
+        /// <summary>
+        /// Возвращает или задаёт дату рождения 
+        /// </summary>
         public DateTime DateOfBirth
         {
             get 
@@ -50,7 +83,7 @@ namespace ContactsApp.Model
             }
             set 
             {
-                if (value.Year < 1900 || value.Year == DateTime.Today.Year)
+                if (value.Year < 1900 || value == DateTime.Today)
                 {
                     throw new ArgumentException("Year of birth can't be curent year and before 1900");
                 }
@@ -58,6 +91,9 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задаёт номер телефона
+        /// </summary>
         public string PhoneNumber
         {
             get 
@@ -74,6 +110,9 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задаёт VK ID
+        /// </summary>
         public string VkId
         {
             get 
@@ -84,16 +123,19 @@ namespace ContactsApp.Model
             {
                 if (value.Length <= 0)
                 {
-                    throw new ArgumentException("VK ID can't be less 0 symbols");
+                    throw new ArgumentException("VK ID can't be eqal or less than 0 symbols");
                 }
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException("VK ID can't be longer to 50 symbols");
+                    throw new ArgumentException("VK ID can't be longer than 50 symbols");
                 }
                 _vkId = value; 
             }
         }
 
+        /// <summary>
+        /// Возвращает или задаёт адрес почты
+        /// </summary>
         public string Email
         {
             get 
@@ -104,16 +146,24 @@ namespace ContactsApp.Model
             {
                 if (value.Length <= 0)
                 {
-                    throw new ArgumentException("Email can't be less 0 symbols");
+                    throw new ArgumentException("Email can't be equal or less than 0 symbols");
                 }
                 if (value.Length > 100)
                 {
-                    throw new ArgumentException("Email can't be longer to 100 symbols");
+                    throw new ArgumentException("Email can't be longer than 100 symbols");
                 }
                 _email = value; 
             }
         }
 
+        /// <summary>
+        /// Конструктор создания экземпляра класса Contaact
+        /// </summary>
+        /// <param name="fullName"></param>
+        /// <param name="dateOfBirth"></param>
+        /// <param name="phonenumber"></param>
+        /// <param name="vkId"></param>
+        /// <param name="email"></param>
         public Contact(string fullName,DateTime dateOfBirth, string phonenumber, string vkId, string email)
         {
             FullName = fullName;
@@ -123,6 +173,10 @@ namespace ContactsApp.Model
             Email = email;
         }
 
+        /// <summary>
+        /// Клонирование контакта
+        /// </summary>
+        /// <returns></returns>
         public object Clone() => new Contact(FullName, DateOfBirth, PhoneNumber, VkId, Email);
     }
 }
