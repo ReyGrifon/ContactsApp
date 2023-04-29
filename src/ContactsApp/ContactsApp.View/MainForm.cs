@@ -77,9 +77,9 @@ namespace ContactsApp.View
                 "иванов", "кирпечёв", "котик","ларкин", "Петров" };
 
             Project project = new Project();
-
-            Contact contact = new Contact(names[random.Next(names.Length)] + " " +
-                surnames[random.Next(surnames.Length)], DateTime.Today, "8(123)000-45-67",
+            string fullName = names[random.Next(names.Length)] + " " +
+                surnames[random.Next(surnames.Length)];
+            Contact contact = new Contact(fullName, DateTime.Today, "8(123)000-45-67",
                 "dsfsdfsds", "GoodPerson@gmail.com");
             _project.Contacts.Add(contact);
         }
