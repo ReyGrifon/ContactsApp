@@ -151,6 +151,7 @@
             RemoveContactButton.SizeMode = PictureBoxSizeMode.CenterImage;
             RemoveContactButton.TabIndex = 5;
             RemoveContactButton.TabStop = false;
+            RemoveContactButton.Click += RemoveContactButton_Click;
             RemoveContactButton.MouseEnter += RemoveContactButton_MouseEnter;
             RemoveContactButton.MouseLeave += RemoveContactButton_MouseLeave;
             // 
@@ -181,6 +182,7 @@
             ContactsListBox.Name = "ContactsListBox";
             ContactsListBox.Size = new Size(226, 367);
             ContactsListBox.TabIndex = 0;
+            ContactsListBox.SelectedIndexChanged += ContactsListBox_SelectedIndexChanged;
             // 
             // ContactInfoPanel
             // 
@@ -304,7 +306,6 @@
             PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             PhoneNumberTextBox.Size = new Size(181, 23);
             PhoneNumberTextBox.TabIndex = 6;
-            PhoneNumberTextBox.Text = "+7 (996) 731-08-94";
             PhoneNumberTextBox.KeyPress += PhoneNumberTextBox_KeyPress;
             // 
             // PhoneNumberLabel
@@ -325,7 +326,6 @@
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.Size = new Size(430, 23);
             EmailTextBox.TabIndex = 4;
-            EmailTextBox.Text = "Buyanov@mail.ru";
             EmailTextBox.KeyPress += EmailTextBox_KeyPress;
             // 
             // EmailLabel
@@ -346,7 +346,6 @@
             FullNameTextBox.Name = "FullNameTextBox";
             FullNameTextBox.Size = new Size(430, 23);
             FullNameTextBox.TabIndex = 2;
-            FullNameTextBox.Text = "Буянов Никита";
             FullNameTextBox.KeyPress += FullNameTextBox_KeyPress;
             // 
             // FullNameLabel
@@ -379,6 +378,7 @@
             KeyPreview = true;
             Name = "MainForm";
             Text = "ContactApp";
+            FormClosing += MainForm_FormClosing;
             KeyDown += MainForm_KeyDown;
             MainTableLayoutPanel.ResumeLayout(false);
             ContactListPanel.ResumeLayout(false);
