@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace ContactsApp.Model
     /// <summary>
     /// класс Contact
     /// </summary>
-    internal class Contact : ICloneable
+    public class Contact : ICloneable
     {
         /// <summary>
         /// Фамилия и Имя
@@ -53,10 +54,10 @@ namespace ContactsApp.Model
                 return _fullName; 
             } 
             set 
-            { 
-                if (value.Length <= 0)
+            {
+                if (value.Length == 0)
                 {
-                    throw new ArgumentException("Name can't be equal or less than 0 symbols");
+                    throw new ArgumentException("FullName can't be equal than 0 symbols");
                 }
                 if (value.Length > 100)
                 {
@@ -66,9 +67,9 @@ namespace ContactsApp.Model
                 string[] words = value.Split(" ");
                 foreach (string word in words)
                 {
-                    normalFullName = word[0].ToString().ToUpper() + word.Substring(1) + " ";
+                    normalFullName += word[0].ToString().ToUpper() + word.Substring(1) + " ";
                 }
-                _fullName = value;
+                _fullName = normalFullName;
             } 
         }
 
@@ -83,7 +84,7 @@ namespace ContactsApp.Model
             }
             set 
             {
-                if (value.Year < 1900 || value == DateTime.Today)
+                if (value.Year < 1900 || value > DateTime.Today)
                 {
                     throw new ArgumentException("Year of birth can't be curent year and before 1900");
                 }
@@ -121,9 +122,9 @@ namespace ContactsApp.Model
             }
             set 
             {
-                if (value.Length <= 0)
+                if (value.Length == 0)
                 {
-                    throw new ArgumentException("VK ID can't be eqal or less than 0 symbols");
+                    throw new ArgumentException("VK ID can't be eqal than 0 symbols");
                 }
                 if (value.Length > 50)
                 {
@@ -144,9 +145,9 @@ namespace ContactsApp.Model
             }
             set 
             {
-                if (value.Length <= 0)
+                if (value.Length == 0)
                 {
-                    throw new ArgumentException("Email can't be equal or less than 0 symbols");
+                    throw new ArgumentException("Email can't be equal than 0 symbols");
                 }
                 if (value.Length > 100)
                 {
@@ -164,12 +165,12 @@ namespace ContactsApp.Model
         /// <param name="phonenumber"></param>
         /// <param name="vkId"></param>
         /// <param name="email"></param>
-        public Contact(string fullName,DateTime dateOfBirth, string phonenumber, string vkId, string email)
+        public Contact(string fullName,DateTime dateOfBirth, string phoneNumber, string vkId, string email)
         {
             FullName = fullName;
             DateOfBirth = dateOfBirth;
-            PhoneNumber = PhoneNumber;
-            VkId = VkId;
+            PhoneNumber = phoneNumber;
+            VkId = vkId;
             Email = email;
         }
 
