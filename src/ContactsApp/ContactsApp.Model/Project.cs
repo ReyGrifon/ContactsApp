@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    internal class Project : Contact
+    internal class Project
     {
 
         List<Contact> contacts = new();
 
-        public Project(string fullName, DateTime dateOfBirth, string phonenumber, string vkId, string email) : base(fullName, dateOfBirth, phonenumber, vkId, email)
+
+        public List<Contact> Contacts
+        {
+            get { return contacts; }
+            set { contacts = value; }
+        }
+
+        public Project(string fullName, DateTime dateOfBirth, string phonenumber, string vkId, string email)
         {
             contacts = new List<Contact>();
         }
@@ -24,7 +31,7 @@ namespace ContactsApp.Model
         public List<Contact> SearchContacts(string query)
         {
             var options = StringComparison.OrdinalIgnoreCase;
-            return contacts.Where(c =>
+            return Contacts.Where(c =>
             c.FullName.Contains(query) ||
             c.Email.Contains(query) ||
             c.PhoneNumber.Contains(query) ||
@@ -39,6 +46,23 @@ namespace ContactsApp.Model
         {
             contacts.Sort((c1, c2) => c1.FullName.CompareTo(c2.FullName));
             return contacts;
+        }
+        /// <summary>
+        /// Поиск Контактов с совпадающим днём рождения
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        private List<Contact> FindByDayOfBirth(DateTime time)
+        {
+            List<Contact> BirhdayContacts = new List<Contact>();
+            foreach (Contact contact in contacts)
+            {
+                if (contact.DateOfBirth == time)
+                {
+                    BirhdayContacts.Add(contact);
+                }
+            }
+            return BirhdayContacts;
         }
     }
 }
