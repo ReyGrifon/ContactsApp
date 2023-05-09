@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
+    /// <summary>
+    /// Класс с списком контактов
+    /// </summary>
     public class Project
     {
+        /// <summary>
+        /// Список всех созданных контактов
+        /// </summary>
         public List<Contact> Contacts { get; set; } = new();
 
         /// <summary>
@@ -19,10 +21,10 @@ namespace ContactsApp.Model
         {
             var options = StringComparison.OrdinalIgnoreCase;
             return Contacts.Where(c =>
-            c.FullName.Contains(query) ||
-            c.Email.Contains(query) ||
-            c.PhoneNumber.Contains(query) ||
-            c.VkId.IndexOf(query, options) >= 0).ToList();
+                c.FullName.Contains(query) ||
+                c.Email.Contains(query) ||
+                c.PhoneNumber.Contains(query) ||
+                c.VkId.IndexOf(query, options) >= 0).ToList();
         }
 
         /// <summary>
@@ -41,12 +43,12 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        private List<Contact> FindByDayOfBirth(DateTime time)
+        private List<Contact> FindByBirthday(DateTime time)
         {
             List<Contact> BirhdayContacts = new List<Contact>();
             foreach (Contact contact in Contacts)
             {
-                if (contact.DateOfBirth == time)
+                if (contact.DateOfBirth.ToString("dd.MM") == time.ToString("dd.MM"))
                 {
                     BirhdayContacts.Add(contact);
                 }
