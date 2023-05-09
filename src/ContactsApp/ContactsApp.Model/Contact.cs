@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace ContactsApp.Model
 {
@@ -35,7 +36,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Шаблон номера телефона +7(999)845-11-22 или 8(888)555-33-22
         /// </summary>
-        private string _phoneNumberRegex = @"(^[+]?[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})";
+        private string _phoneNumberRegex = @"(^[+]?[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$";
 
         /// <summary>
         /// Возвращает или задаёт имя 
@@ -56,13 +57,8 @@ namespace ContactsApp.Model
                 {
                     throw new ArgumentException("Name can't be longer than 100 symbols");
                 }
-                string normalFullName = "";
-                string[] words = value.Split(" ");
-                foreach (string word in words)
-                {
-                    normalFullName += word[0].ToString().ToUpper() + word.Substring(1) + " ";
-                }
-                _fullName = normalFullName;
+                TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                _fullName = ti.ToTitleCase(value);
             } 
         }
 
@@ -96,7 +92,7 @@ namespace ContactsApp.Model
             }
             set 
             {
-                if (!Regex.IsMatch(value,_phoneNumberRegex)!)
+                if (!Regex.IsMatch(value, _phoneNumberRegex)!)
                 {
                     throw new ArgumentException("Number does not fit the pattern 8(123)000-45-67 or +7(123)000-45-67");
                 }
