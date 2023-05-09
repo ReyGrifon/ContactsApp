@@ -107,6 +107,7 @@
             DateOfBirthTimePicker.Size = new Size(180, 23);
             DateOfBirthTimePicker.TabIndex = 13;
             DateOfBirthTimePicker.Value = new DateTime(2000, 4, 1, 11, 56, 0, 0);
+            DateOfBirthTimePicker.ValueChanged += DateOfBirthTimePicker_ValueChanged;
             // 
             // VKTextBox
             // 
@@ -115,6 +116,7 @@
             VKTextBox.Name = "VKTextBox";
             VKTextBox.Size = new Size(180, 23);
             VKTextBox.TabIndex = 12;
+            VKTextBox.TextChanged += VKTextBox_TextChanged;
             // 
             // VKLabel
             // 
@@ -144,6 +146,7 @@
             PhoneNumberTextBox.Size = new Size(180, 23);
             PhoneNumberTextBox.TabIndex = 8;
             PhoneNumberTextBox.Text = "+7 (996) 731-08-94";
+            PhoneNumberTextBox.TextChanged += PhoneNumberTextBox_TextChanged;
             // 
             // PhoneNumberLabel
             // 
@@ -164,6 +167,7 @@
             EmailTextBox.Size = new Size(379, 23);
             EmailTextBox.TabIndex = 6;
             EmailTextBox.Text = "Buyanov@mail.ru";
+            EmailTextBox.TextChanged += EmailTextBox_TextChanged;
             // 
             // EmailLabel
             // 
@@ -184,6 +188,7 @@
             FullNameTextBox.Size = new Size(379, 23);
             FullNameTextBox.TabIndex = 4;
             FullNameTextBox.Text = "Буянов Никита";
+            FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
             // FullNameLabel
             // 
