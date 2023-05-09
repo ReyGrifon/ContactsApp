@@ -1,21 +1,14 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Text.RegularExpressions;
 
 namespace ContactsApp.Model
 {
     /// <summary>
-    /// класс Contact
+    /// Информационны класс Контакт
     /// </summary>
     public class Contact : ICloneable
     {
         /// <summary>
-        /// Фамилия и Имя
+        /// Полное имя
         /// </summary>
         private string _fullName;
 
@@ -162,7 +155,7 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="fullName"></param>
         /// <param name="dateOfBirth"></param>
-        /// <param name="phonenumber"></param>
+        /// <param name="phoneNumber"></param>
         /// <param name="vkId"></param>
         /// <param name="email"></param>
         public Contact(string fullName,DateTime dateOfBirth, string phoneNumber, string vkId, string email)
