@@ -1,11 +1,4 @@
 using ContactsApp.Model;
-using System.ComponentModel.Design;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
 
 namespace ContactsApp.View
 {
@@ -45,10 +38,8 @@ namespace ContactsApp.View
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.Email;
             PhoneNumberTextBox.Text = contact.PhoneNumber;
-            string DayOfBirth = contact.DateOfBirth.Day.ToString() + "." + 
-                contact.DateOfBirth.Month.ToString() + "." + 
-                contact.DateOfBirth.Year.ToString();
-            DateOfBirthTextBox.Text = DayOfBirth;
+            string dateOfBirth = contact.DateOfBirth.ToString("dd.MM.yyyy");
+            DateOfBirthTextBox.Text = dateOfBirth;
             VKTextBox.Text = contact.VkId;
         }
 
@@ -103,6 +94,68 @@ namespace ContactsApp.View
                 _project.Contacts.Remove(_project.Contacts[index]);
             }
 
+        }
+
+        /// <summary>
+        /// Закрытие панели с именниками
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
+        {
+            BirthdayPanel.Hide();
+        }
+        /// <summary>
+        /// Редактирование контакта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            var form = new ContactForm();
+            form.ShowDialog();
+        }
+
+        /// <summary>
+        /// Удаление выбранного контакта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveContactButton_Click(object sender, EventArgs e)
+        {
+            RemoveContact(ContactsListBox.SelectedIndex);
+            UpdateListBox();
+        }
+
+        /// <summary>
+        /// Изменение информации в полях справа при изменении поля ListBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                ClearSelectedObject();
+                return;
+            }
+            UpdateSelectedContact(ContactsListBox.SelectedIndex);
+        }
+
+        /// <summary>
+        /// Предупреждение для закрытия формы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string message = "Do you really want to exit ?";
+            DialogResult result;
+            result = MessageBox.Show(message, "", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void AddContactButton_MouseEnter(object sender, EventArgs e)
@@ -183,68 +236,5 @@ namespace ContactsApp.View
                 form.ShowDialog();
             }
         }
-
-        /// <summary>
-        /// Закрытие панели с именниками
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
-        {
-            BirthdayPanel.Hide();
-        }
-        /// <summary>
-        /// Редактирование контакта
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EditContactButton_Click(object sender, EventArgs e)
-        {
-            var form = new ContactForm();
-            form.ShowDialog();
-        }
-
-        /// <summary>
-        /// Удаление выбранного контакта
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RemoveContactButton_Click(object sender, EventArgs e)
-        {
-            RemoveContact(ContactsListBox.SelectedIndex);
-            UpdateListBox();
-        }
-
-        /// <summary>
-        /// Изменение информации в полях справа при изменении поля ListBox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ContactsListBox.SelectedIndex == -1)
-            {
-                ClearSelectedObject();
-                return;
-            }
-            UpdateSelectedContact(ContactsListBox.SelectedIndex);
-        }
-
-        /// <summary>
-        /// Предупреждение для закрытия формы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            string message = "Do you really want to exit ?";
-            DialogResult result;
-            result = MessageBox.Show(message, "", MessageBoxButtons.YesNo);
-            if(result != DialogResult.Yes)
-            {
-                e.Cancel = true;
-            }
-
         }
     }
-}
