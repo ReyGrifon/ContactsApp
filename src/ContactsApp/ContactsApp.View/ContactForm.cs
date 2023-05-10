@@ -34,6 +34,22 @@ namespace ContactsApp.View
         /// </summary>
         private Contact _contact;
 
+        public Contact Contact
+        { 
+            get 
+            { 
+                return _contact; 
+            }
+            set
+            {
+                _contact = value;
+                if (value != null)
+                {
+                    UpdateForm();
+                }
+            }
+        }
+
         public ContactForm()
         {
             InitializeComponent();
@@ -110,6 +126,7 @@ namespace ContactsApp.View
             if (CheckFormOnErrors())
             {
                 UpdateContact();
+                DialogResult = DialogResult.OK;
                 Close();
             }
         }

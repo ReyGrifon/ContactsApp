@@ -1,4 +1,5 @@
 using ContactsApp.Model;
+using System;
 
 namespace ContactsApp.View
 {
@@ -92,6 +93,7 @@ namespace ContactsApp.View
             if (result == DialogResult.OK)
             {
                 _project.Contacts.Remove(_project.Contacts[index]);
+                ContactsListBox.SelectedIndex = -1;
             }
 
         }
@@ -112,8 +114,24 @@ namespace ContactsApp.View
         /// <param name="e"></param>
         private void EditContactButton_Click(object sender, EventArgs e)
         {
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            var selectedIndex = ContactsListBox.SelectedIndex;
+            var selectedContact = _project.Contacts[selectedIndex];
             var form = new ContactForm();
+            form.Contact = (Contact)selectedContact.Clone();
             form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                var updatedContact = form.Contact;
+                ContactsListBox.Items.RemoveAt(selectedIndex);
+                //_project.Contacts.Remove(_project.Contacts[selectedIndex]);
+                _project.Contacts[selectedIndex] = updatedContact;
+                ContactsListBox.Items.Insert(selectedIndex, updatedContact);
+            }
+            UpdateListBox();
         }
 
         /// <summary>
@@ -172,10 +190,15 @@ namespace ContactsApp.View
 
         private void AddContactButton_MouseClick(object sender, MouseEventArgs e)
         {
-            //Откоментировать при добавлении связи между окнами
-            //var form = new ContactForm();
-            //form.ShowDialog();
-            AddContact();
+            var form = new ContactForm();
+            form.ShowDialog();
+            if (form.DialogResult  == DialogResult.OK)
+            {
+                var contact = form.Contact;
+                _project.Contacts.Add(contact);
+            }
+            //Убрать добавление рандомного контакта в отдельный класс
+            //AddContact();
             UpdateListBox();
         }
 
