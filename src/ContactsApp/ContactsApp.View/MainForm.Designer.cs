@@ -170,6 +170,7 @@
             FindTextBox.Name = "FindTextBox";
             FindTextBox.Size = new Size(187, 23);
             FindTextBox.TabIndex = 1;
+            FindTextBox.TextChanged += FindTextBox_TextChanged;
             // 
             // ContactsListBox
             // 
