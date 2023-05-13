@@ -12,27 +12,27 @@ namespace ContactsApp.View
         /// <summary>
         /// Поле с текстом ошибки поля fullname класса Contact
         /// </summary>
-        string _fullNameError = "";
+        string _fullNameError;
 
         /// <summary>
         /// Поле с текстом ошибки поля email класса Contact
         /// </summary>
-        string _emailNameError = "";
+        string _emailNameError;
 
         /// <summary>
         /// Поле с текстом ошибки поля phoneNumber класса Contact
         /// </summary>
-        string _phoneNumberNameError = "";
+        string _phoneNumberNameError;
 
         /// <summary>
         /// Поле с текстом ошибки поля dateOfBirth класса Contact
         /// </summary>
-        string _dateOfBirthNameError = "";
+        string _dateOfBirthNameError;
 
         /// <summary>
         /// Поле с текстом ошибки поля vkId класса Contact
         /// </summary>
-        string _vkIdNameError = "";
+        string _vkIdNameError;
 
         /// <summary>
         /// объект класса Contact
