@@ -16,8 +16,14 @@ namespace ContactsApp.View
         /// </summary>
         private List<Contact> _curentContacts = new List<Contact>();
 
+        /// <summary>
+        /// объект для сохранения и загрузки Project
+        /// </summary>
+        private ProjectManager _projectManager = new ProjectManager();
+
         public MainForm()
         {
+            _project = _projectManager.LoadProject();
             InitializeComponent();
             UpdateListBox();
         }
@@ -29,7 +35,6 @@ namespace ContactsApp.View
         {
             ContactsListBox.Items.Clear();
             _curentContacts = _project.SortContacts(_project.SearchContacts(FindTextBox.Text));
-
             foreach (var contacts in _curentContacts)
             {
                 ContactsListBox.Items.Add(contacts.FullName);
@@ -65,6 +70,7 @@ namespace ContactsApp.View
 
         /// <summary>
         /// Добавление случайного контакта
+        /// Убрать в отдельный класс
         /// </summary>
         private void AddContact()
         {
@@ -149,6 +155,7 @@ namespace ContactsApp.View
             EditContact();
             UpdateListBox();
             ClearSelectedObject();
+            _projectManager.SaveProject(_project);
         }
 
         /// <summary>
@@ -161,6 +168,7 @@ namespace ContactsApp.View
             RemoveContact();
             UpdateListBox();
             ClearSelectedObject();
+            _projectManager.SaveProject(_project);
         }
 
         /// <summary>
@@ -192,18 +200,20 @@ namespace ContactsApp.View
             {
                 e.Cancel = true;
             }
+            _projectManager.SaveProject(_project);
         }
 
-        private void AddContactButton_MouseEnter(object sender, EventArgs e)
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
-            AddContactButton.Image = Properties.Resources.add_contact_32x32;
-            AddContactButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
-        }
-
-        private void AddContactButton_MouseLeave(object sender, EventArgs e)
-        {
-            AddContactButton.Image = Properties.Resources.add_contact_32x32_gray;
-            AddContactButton.BackColor = Color.White;
+            if (FindTextBox.Text != "")
+            {
+                _curentContacts = _project.SearchContacts(FindTextBox.Text);
+            }
+            else
+            {
+                _curentContacts = _project.Contacts;
+            }
+            UpdateListBox();
         }
 
         private void AddContactButton_MouseClick(object sender, MouseEventArgs e)
@@ -219,6 +229,19 @@ namespace ContactsApp.View
             //Убрать добавление рандомного контакта в отдельный класс
             //AddContact();
             UpdateListBox();
+            _projectManager.SaveProject(_project);
+        }
+
+        private void AddContactButton_MouseEnter(object sender, EventArgs e)
+        {
+            AddContactButton.Image = Properties.Resources.add_contact_32x32;
+            AddContactButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
+        }
+
+        private void AddContactButton_MouseLeave(object sender, EventArgs e)
+        {
+            AddContactButton.Image = Properties.Resources.add_contact_32x32_gray;
+            AddContactButton.BackColor = Color.White;
         }
 
         private void RemoveContactButton_MouseEnter(object sender, EventArgs e)
@@ -277,19 +300,6 @@ namespace ContactsApp.View
                 var form = new AboutForm();
                 form.ShowDialog();
             }
-        }
-
-        private void FindTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (FindTextBox.Text != "")
-            {
-                _curentContacts = _project.SearchContacts(FindTextBox.Text);
-            }
-            else
-            {
-                _curentContacts = _project.Contacts;
-            }
-            UpdateListBox();
         }
     }
 }

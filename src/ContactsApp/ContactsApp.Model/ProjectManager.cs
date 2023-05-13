@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ContactsApp.Model
 {
-    internal class ProjectManager
+    public class ProjectManager
     {
         /// <summary>
         /// путь к папке appData
@@ -11,37 +11,59 @@ namespace ContactsApp.Model
         private static string _appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         /// <summary>
-        /// путь к сохраняемому файлу
+        /// путь к сохраняемой папке
         /// </summary>
-        private static string _pathFile = $@"{_appDataPath}\Pchelnik\ContactsApp\ContactsApp.notes";
+        private static string _docPath = $"{_appDataPath}\\Pchelnik\\ContactsApp";
 
         /// <summary>
-        /// Сохраняет проект по пути _pathFile
+        /// путь к сохраняемому файлу
+        /// </summary>
+        private static string _filePath = _docPath + "\\ContactsApp.notes";
+
+        /// <summary>
+        /// Сохраняет проект по пути _docPath
         /// </summary>
         /// <param name="project"></param>
         public void SaveProject(Project project)
         {
-            if (!Directory.Exists(_pathFile))
+            if (!Directory.Exists(_docPath))
             {
-                Directory.CreateDirectory(_pathFile);
+                Directory.CreateDirectory(_docPath);
             }
-            File.WriteAllText(_pathFile, JsonConvert.SerializeObject(project));
+            File.WriteAllText(_filePath, JsonConvert.SerializeObject(project));
         }
 
         /// <summary>
-        /// Загружает данные из пути _pathFile
+        /// Загружает данные из пути _docPath
         /// </summary>
         /// <returns></returns>
         public Project LoadProject()
         {
-            Project project;
-            using(StreamReader reader = new StreamReader(_pathFile)) 
+            try
             {
-                string jsonData = reader.ReadToEnd();
-
-                project = JsonConvert.DeserializeObject<Project>(jsonData);
+                Project project;
+                JsonSerializer serializer = new JsonSerializer();
+                if (!Directory.Exists(_docPath))
+                {
+                    Directory.CreateDirectory(_docPath);
+                }
+                if (!File.Exists(_filePath))
+                {
+                    var fileStream = File.Create(_filePath);
+                    fileStream.Close();
+                }
+                using (StreamReader reader = new StreamReader(_filePath))
+                {
+                    string jsonData = reader.ReadToEnd();
+                    project = JsonConvert.DeserializeObject<Project>(jsonData);
+                }
+                return project ?? new Project();
             }
-            return project;
+            catch (Exception ex)
+            {
+                return new Project();
+            }
+
         }
 
     }
