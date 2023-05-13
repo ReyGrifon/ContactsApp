@@ -1,6 +1,7 @@
 using ContactsApp.Model;
 using System;
 using System.Reflection;
+using System.Linq;
 
 namespace ContactsApp.View
 {
@@ -23,8 +24,9 @@ namespace ContactsApp.View
 
         public MainForm()
         {
-            _project = _projectManager.LoadProject();
             InitializeComponent();
+            _project = _projectManager.LoadProject();
+            UpdateBirthdayContacts();
             UpdateListBox();
         }
 
@@ -34,10 +36,30 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
-            _curentContacts = _project.SortContacts(_project.SearchContacts(FindTextBox.Text));
+            var findedContacts = _project.SearchContacts(FindTextBox.Text);
+            _curentContacts = _project.SortContacts(findedContacts);
             foreach (var contacts in _curentContacts)
             {
                 ContactsListBox.Items.Add(contacts.FullName);
+            }
+        }
+
+        /// <summary>
+        /// Обновление панели BirthdayPanel fullName именинников
+        /// </summary>
+        private void UpdateBirthdayContacts()
+        {
+            List<Contact> _birthdayContacts = new List<Contact>();
+            _birthdayContacts = _project.FindByBirthday(DateTime.Today);
+            BirthdaySurnamesLabel.Text = "";
+            foreach (Contact contact in _birthdayContacts)
+            {
+                if (contact == _birthdayContacts.Last())
+                {
+                    BirthdaySurnamesLabel.Text += contact.FullName;
+                    return;
+                }
+                BirthdaySurnamesLabel.Text += contact.FullName + ", ";
             }
         }
 
@@ -51,7 +73,7 @@ namespace ContactsApp.View
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.Email;
             PhoneNumberTextBox.Text = contact.PhoneNumber;
-            string dateOfBirth = contact.DateOfBirth.ToString("dd.MM.yyyy");
+            string dateOfBirth = contact.DateOfBirth.ToString("yyyy.MM.dd");
             DateOfBirthTextBox.Text = dateOfBirth;
             VKTextBox.Text = contact.VkId;
         }
@@ -68,9 +90,9 @@ namespace ContactsApp.View
             VKTextBox.Text = "";
         }
 
+        //TODO: убрать в отдельный класс
         /// <summary>
         /// Добавление случайного контакта
-        /// Убрать в отдельный класс
         /// </summary>
         private void AddContact()
         {
@@ -142,7 +164,7 @@ namespace ContactsApp.View
         /// <param name="e"></param>
         private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
         {
-            BirthdayPanel.Hide();
+            BirthdayPanel.Visible = false;
         }
 
         /// <summary>
@@ -152,9 +174,10 @@ namespace ContactsApp.View
         /// <param name="e"></param>
         private void EditContactButton_Click(object sender, EventArgs e)
         {
+            var index = ContactsListBox.SelectedIndex;
             EditContact();
             UpdateListBox();
-            ClearSelectedObject();
+            UpdateSelectedContact(index);
             _projectManager.SaveProject(_project);
         }
 
@@ -205,14 +228,7 @@ namespace ContactsApp.View
 
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (FindTextBox.Text != "")
-            {
-                _curentContacts = _project.SearchContacts(FindTextBox.Text);
-            }
-            else
-            {
-                _curentContacts = _project.Contacts;
-            }
+            _curentContacts = _project.SearchContacts(FindTextBox.Text);
             UpdateListBox();
         }
 

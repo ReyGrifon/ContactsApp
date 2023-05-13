@@ -19,6 +19,10 @@ namespace ContactsApp.Model
         /// <returns></returns>
         public List<Contact> SearchContacts(string query)
         {
+            if(query == null)
+            {
+                return Contacts;
+            }
             var options = StringComparison.OrdinalIgnoreCase;
             return Contacts.Where(c =>
                 c.FullName.Contains(query, options) ||
@@ -43,7 +47,7 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        private List<Contact> FindByBirthday(DateTime time)
+        public List<Contact> FindByBirthday(DateTime time)
         {
             List<Contact> BirhdayContacts = new List<Contact>();
             foreach (Contact contact in Contacts)

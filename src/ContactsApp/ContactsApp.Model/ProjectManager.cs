@@ -30,6 +30,11 @@ namespace ContactsApp.Model
             {
                 Directory.CreateDirectory(_docPath);
             }
+            if (!File.Exists(_filePath)) 
+            {
+                var fileStream = File.Create(_filePath);
+                fileStream.Close();
+            }
             File.WriteAllText(_filePath, JsonConvert.SerializeObject(project));
         }
 
@@ -42,15 +47,9 @@ namespace ContactsApp.Model
             try
             {
                 Project project;
-                JsonSerializer serializer = new JsonSerializer();
-                if (!Directory.Exists(_docPath))
-                {
-                    Directory.CreateDirectory(_docPath);
-                }
                 if (!File.Exists(_filePath))
                 {
-                    var fileStream = File.Create(_filePath);
-                    fileStream.Close();
+                    return new Project();
                 }
                 using (StreamReader reader = new StreamReader(_filePath))
                 {
@@ -59,7 +58,7 @@ namespace ContactsApp.Model
                 }
                 return project ?? new Project();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 return new Project();
             }

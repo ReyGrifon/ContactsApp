@@ -1,13 +1,19 @@
 ﻿using ContactsApp.Model;
+using System;
 
 namespace ContactsApp.View
 {
     public partial class ContactForm : Form
     {
+        /// <summary>
+        /// Цвет информациионных полей по умолчанию
+        /// </summary>
+        private static Color CorrectColor = Color.White;
 
-        private Color correctColor = Color.White;
-
-        private Color errorColor = Color.LightPink;
+        /// <summary>
+        /// Цвет информационных полей при ошибке введения
+        /// </summary>
+        private static Color ErrorColor = Color.LightPink;
 
         /// <summary>
         /// Поле с текстом ошибки поля fullname класса Contact
@@ -96,7 +102,7 @@ namespace ContactsApp.View
         {
             if (error != "")
             {
-                return "•" + error + "\n";
+                return " • " + error + "\n";
             }
             return null;
         }
@@ -146,13 +152,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.FullName = FullNameTextBox.Text;
-                FullNameTextBox.BackColor = correctColor;
+                FullNameTextBox.BackColor = CorrectColor;
                 _fullNameError = "";
             }
-            catch (Exception error)
+            catch (Exception exceprion)
             {
-                FullNameTextBox.BackColor = errorColor;
-                _fullNameError = error.Message;
+                FullNameTextBox.BackColor = ErrorColor;
+                _fullNameError = exceprion.Message;
             }
 
         }
@@ -167,13 +173,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.Email = EmailTextBox.Text;
-                EmailTextBox.BackColor = correctColor;
+                EmailTextBox.BackColor = CorrectColor;
                 _emailNameError = "";
             }
-            catch (Exception error)
+            catch (Exception exceprion)
             {
-                EmailTextBox.BackColor = errorColor;
-                _emailNameError = error.Message;
+                EmailTextBox.BackColor = ErrorColor;
+                _emailNameError = exceprion.Message;
             }
         }
 
@@ -187,13 +193,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.PhoneNumber = PhoneNumberTextBox.Text;
-                PhoneNumberTextBox.BackColor = correctColor;
+                PhoneNumberTextBox.BackColor = CorrectColor;
                 _phoneNumberNameError = "";
             }
-            catch (Exception error)
+            catch (Exception exceprion)
             {
-                PhoneNumberTextBox.BackColor = errorColor;
-                _phoneNumberNameError = error.Message;
+                PhoneNumberTextBox.BackColor = ErrorColor;
+                _phoneNumberNameError = exceprion.Message;
             }
         }
 
@@ -207,13 +213,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.DateOfBirth = DateOfBirthTimePicker.Value;
-                DateOfBirthTimePicker.CalendarTitleBackColor = correctColor;
+                DateOfBirthTimePicker.CalendarTitleBackColor = CorrectColor;
                 _dateOfBirthNameError = "";
             }
-            catch (Exception error)
+            catch (Exception exceprion)
             {
-                DateOfBirthTimePicker.CalendarTitleBackColor = errorColor;
-                _dateOfBirthNameError = error.Message;
+                DateOfBirthTimePicker.CalendarTitleBackColor = ErrorColor;
+                _dateOfBirthNameError = exceprion.Message;
             }
         }
 
@@ -227,13 +233,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.VkId = VKTextBox.Text;
-                VKTextBox.BackColor = correctColor;
+                VKTextBox.BackColor = CorrectColor;
                 _vkIdNameError = "";
             }
-            catch (Exception error)
+            catch (Exception exceprion)
             {
-                VKTextBox.BackColor = errorColor;
-                _vkIdNameError = error.Message;
+                VKTextBox.BackColor = ErrorColor;
+                _vkIdNameError = exceprion.Message;
             }
         }
 
