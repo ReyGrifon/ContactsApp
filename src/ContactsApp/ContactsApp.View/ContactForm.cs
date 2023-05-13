@@ -4,6 +4,11 @@ namespace ContactsApp.View
 {
     public partial class ContactForm : Form
     {
+
+        private Color correctColor = Color.White;
+
+        private Color errorColor = Color.LightPink;
+
         /// <summary>
         /// Поле с текстом ошибки поля fullname класса Contact
         /// </summary>
@@ -141,12 +146,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.FullName = FullNameTextBox.Text;
-                FullNameTextBox.BackColor = Color.White;
+                FullNameTextBox.BackColor = correctColor;
                 _fullNameError = "";
             }
             catch (Exception error)
             {
-                FullNameTextBox.BackColor = Color.LightPink;
+                FullNameTextBox.BackColor = errorColor;
                 _fullNameError = error.Message;
             }
 
@@ -162,12 +167,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.Email = EmailTextBox.Text;
-                EmailTextBox.BackColor = Color.White;
+                EmailTextBox.BackColor = correctColor;
                 _emailNameError = "";
             }
             catch (Exception error)
             {
-                EmailTextBox.BackColor = Color.LightPink;
+                EmailTextBox.BackColor = errorColor;
                 _emailNameError = error.Message;
             }
         }
@@ -182,12 +187,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.PhoneNumber = PhoneNumberTextBox.Text;
-                PhoneNumberTextBox.BackColor = Color.White;
+                PhoneNumberTextBox.BackColor = correctColor;
                 _phoneNumberNameError = "";
             }
             catch (Exception error)
             {
-                PhoneNumberTextBox.BackColor = Color.LightPink;
+                PhoneNumberTextBox.BackColor = errorColor;
                 _phoneNumberNameError = error.Message;
             }
         }
@@ -202,12 +207,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.DateOfBirth = DateOfBirthTimePicker.Value;
-                DateOfBirthTimePicker.CalendarTitleBackColor = Color.White;
+                DateOfBirthTimePicker.CalendarTitleBackColor = correctColor;
                 _dateOfBirthNameError = "";
             }
             catch (Exception error)
             {
-                DateOfBirthTimePicker.CalendarTitleBackColor = Color.LightPink;
+                DateOfBirthTimePicker.CalendarTitleBackColor = errorColor;
                 _dateOfBirthNameError = error.Message;
             }
         }
@@ -222,12 +227,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.VkId = VKTextBox.Text;
-                VKTextBox.BackColor = Color.White;
+                VKTextBox.BackColor = correctColor;
                 _vkIdNameError = "";
             }
             catch (Exception error)
             {
-                VKTextBox.BackColor = Color.LightPink;
+                VKTextBox.BackColor = errorColor;
                 _vkIdNameError = error.Message;
             }
         }
