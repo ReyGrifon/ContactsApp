@@ -4,42 +4,42 @@ using System.Text.RegularExpressions;
 namespace ContactsApp.Model
 {
     /// <summary>
-    /// Информационны класс Контакт
+    /// Информационны класс Контакт.
     /// </summary>
     public class Contact : ICloneable
     {
         /// <summary>
-        /// Полное имя
+        /// Полное имя.
         /// </summary>
         private string _fullName;
 
         /// <summary>
-        /// Дата рождения 
+        /// Дата рождения. 
         /// </summary>
         private DateTime _dateOfBirth;
 
         /// <summary>
-        /// номер телефона 
+        /// Номер телефона.
         /// </summary>
         private string _phoneNumber;
 
         /// <summary>
-        /// Id  в VK
+        /// Id  в VK.
         /// </summary>
         private string _vkId;
 
         /// <summary>
-        /// электронная почта 
+        /// Электронная почта.
         /// </summary>
         private string _email;
 
         /// <summary>
-        /// Шаблон номера телефона +7(999)845-11-22 или 8(888)555-33-22
+        /// Шаблон номера телефона +7(999)845-11-22 или 8(888)555-33-22.
         /// </summary>
         private string _phoneNumberRegex = @"(^[+]?[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$";
 
         /// <summary>
-        /// Возвращает или задаёт имя 
+        /// Возвращает или задаёт имя. 
         /// </summary>
         public string FullName
         { 
@@ -63,7 +63,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Возвращает или задаёт дату рождения 
+        /// Возвращает или задаёт дату рождения.
         /// </summary>
         public DateTime DateOfBirth
         {
@@ -82,7 +82,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Возвращает или задаёт номер телефона
+        /// Возвращает или задаёт номер телефона.
         /// </summary>
         public string PhoneNumber
         {
@@ -101,7 +101,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Возвращает или задаёт VK ID
+        /// Возвращает или задаёт VK ID.
         /// </summary>
         public string VkId
         {
@@ -124,7 +124,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Возвращает или задаёт адрес почты
+        /// Возвращает или задаёт адрес почты.
         /// </summary>
         public string Email
         {
@@ -147,7 +147,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Конструктор создания экземпляра класса Contaact
+        /// Конструктор создания экземпляра класса Contaact.
         /// </summary>
         /// <param name="fullName"></param>
         /// <param name="dateOfBirth"></param>
@@ -164,7 +164,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Клонирование контакта
+        /// Клонирование контакта.
         /// </summary>
         /// <returns></returns>
         public object Clone() => new Contact(FullName, DateOfBirth, PhoneNumber, VkId, Email);

@@ -3,17 +3,17 @@
 namespace ContactsApp.Model
 {
     /// <summary>
-    /// Класс с списком контактов
+    /// Класс с списком контактов.
     /// </summary>
     public class Project
     {
         /// <summary>
-        /// Список всех созданных контактов
+        /// Список всех созданных контактов.
         /// </summary>
         public List<Contact> Contacts { get; set; } = new();
 
         /// <summary>
-        /// Поиск контакта по подстроке одного из полей
+        /// Поиск контакта по подстроке одного из полей.
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -32,7 +32,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Сортировка контактов
+        /// Сортировка контактов.
         /// </summary>
         /// <param name="contacts"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Поиск Контактов с совпадающим днём рождения
+        /// Поиск Контактов с совпадающим днём рождения.
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>

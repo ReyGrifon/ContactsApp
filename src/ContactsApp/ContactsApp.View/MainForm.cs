@@ -8,17 +8,17 @@ namespace ContactsApp.View
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Project С контактами
+        /// Project С контактами.
         /// </summary>
         private Project _project = new Project();
 
         /// <summary>
-        /// Лист с контактами для отображения в приложении
+        /// Лист с контактами для отображения в приложении.
         /// </summary>
         private List<Contact> _curentContacts = new List<Contact>();
 
         /// <summary>
-        /// объект для сохранения и загрузки Project
+        /// Объект для сохранения и загрузки Project.
         /// </summary>
         private ProjectManager _projectManager = new ProjectManager();
 
@@ -31,7 +31,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обновление ListBox
+        /// Обновление ListBox.
         /// </summary>
         private void UpdateListBox()
         {
@@ -45,7 +45,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обновление панели BirthdayPanel fullName именинников
+        /// Обновление панели BirthdayPanel fullName именинников.
         /// </summary>
         private void UpdateBirthdayContacts()
         {
@@ -64,7 +64,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обновление информационных полей соответсвенно выбранному контакту
+        /// Обновление информационных полей соответсвенно выбранному контакту.
         /// </summary>
         /// <param name="index"></param>
         private void UpdateSelectedContact(int index)
@@ -79,7 +79,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Очищение информационных полей при отсутсвии выбранного контакта
+        /// Очищение информационных полей при отсутсвии выбранного контакта.
         /// </summary>
         private void ClearSelectedObject()
         {
@@ -92,7 +92,7 @@ namespace ContactsApp.View
 
         //TODO: убрать в отдельный класс
         /// <summary>
-        /// Добавление случайного контакта
+        /// Добавление случайного контакта.
         /// </summary>
         private void AddContact()
         {
@@ -112,7 +112,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Удаление контакта
+        /// Удаление контакта.
         /// </summary>
         private void RemoveContact()
         {
@@ -136,7 +136,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Редактирование контакта
+        /// Редактирование контакта.
         /// </summary>
         private void EditContact()
         {
@@ -158,7 +158,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Закрытие панели с именниками
+        /// Закрытие панели с именниками.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -168,7 +168,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Редактирование контакта
+        /// Редактирование контакта.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -182,7 +182,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Удаление выбранного контакта
+        /// Удаление выбранного контакта.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -195,7 +195,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Изменение информации в полях справа при изменении поля ListBox
+        /// Изменение информации в полях справа при изменении поля ListBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -210,7 +210,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Предупреждение для закрытия формы
+        /// Предупреждение для закрытия формы.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

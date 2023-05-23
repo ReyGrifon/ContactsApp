@@ -6,45 +6,48 @@ namespace ContactsApp.View
     public partial class ContactForm : Form
     {
         /// <summary>
-        /// Цвет информациионных полей по умолчанию
+        /// Цвет информациионных полей по умолчанию.
         /// </summary>
         private static Color CorrectColor = Color.White;
 
         /// <summary>
-        /// Цвет информационных полей при ошибке введения
+        /// Цвет информационных полей при ошибке введения.
         /// </summary>
         private static Color ErrorColor = Color.LightPink;
 
         /// <summary>
-        /// Поле с текстом ошибки поля fullname класса Contact
+        /// Поле с текстом ошибки поля fullname класса Contact.
         /// </summary>
         string _fullNameError;
 
         /// <summary>
-        /// Поле с текстом ошибки поля email класса Contact
+        /// Поле с текстом ошибки поля email класса Contact.
         /// </summary>
         string _emailNameError;
 
         /// <summary>
-        /// Поле с текстом ошибки поля phoneNumber класса Contact
+        /// Поле с текстом ошибки поля phoneNumber класса Contact.
         /// </summary>
         string _phoneNumberNameError;
 
         /// <summary>
-        /// Поле с текстом ошибки поля dateOfBirth класса Contact
+        /// Поле с текстом ошибки поля dateOfBirth класса Contact.
         /// </summary>
         string _dateOfBirthNameError;
 
         /// <summary>
-        /// Поле с текстом ошибки поля vkId класса Contact
+        /// Поле с текстом ошибки поля vkId класса Contact.
         /// </summary>
         string _vkIdNameError;
 
         /// <summary>
-        /// объект класса Contact
+        /// Объект класса Contact.
         /// </summary>
         private Contact _contact;
 
+        /// <summary>
+        /// Возвращает или задаёт контакт.
+        /// </summary>
         public Contact Contact
         { 
             get 
@@ -70,7 +73,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// заполнение полей данными контакта
+        /// Заполнение полей данными контакта.
         /// </summary>
         private void UpdateForm()
         {
@@ -82,7 +85,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// обновление контакта записанными значениями полей
+        /// Обновление контакта записанными значениями полей.
         /// </summary>
         private void UpdateContact()
         {
@@ -94,7 +97,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Поиск текста ошибки и запись под правильный формат
+        /// Поиск текста ошибки и запись под правильный формат.
         /// </summary>
         /// <param name="error"></param>
         /// <returns></returns>
@@ -108,7 +111,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Проверка на наличие ошибкок и их вывод
+        /// Проверка на наличие ошибкок и их вывод.
         /// </summary>
         /// <returns></returns>
         private bool CheckFormOnErrors()
@@ -128,7 +131,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обработчик нажатия на кнопку OK
+        /// Обработчик нажатия на кнопку OK.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -143,7 +146,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// реакция на изменение текстового поля fullName
+        /// Реакция на изменение текстового поля fullName.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -164,7 +167,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// реакция на изменение текстового поля Email
+        /// Реакция на изменение текстового поля Email.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -184,7 +187,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// реакция на изменение текстового поля phoneNumber
+        /// Реакция на изменение текстового поля phoneNumber.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -204,7 +207,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// реакция на изменение текстового поля dateOfBirth
+        /// Реакция на изменение текстового поля dateOfBirth.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -224,7 +227,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// реакция на изменение текстового поля vkId
+        /// Реакция на изменение текстового поля vkId.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -244,7 +247,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// обработчик нажатия на кнопку Cancel
+        /// Обработчик нажатия на кнопку Cancel.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -254,7 +257,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// обработчик наведения курсора мыши 
+        /// Обработчик наведения курсора мыши.
         /// на кнопку загрузки аватара
         /// </summary>
         /// <param name="sender"></param>
@@ -266,7 +269,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// обработчик отвода курсора мыши 
+        /// Обработчик отвода курсора мыши.
         /// от кнопки загрузки аватара
         /// </summary>
         /// <param name="sender"></param>

@@ -6,29 +6,29 @@ namespace ContactsApp.Model
     public class ProjectManager
     {
         /// <summary>
-        /// путь к папке appData
+        /// Путь к папке appData.
         /// </summary>
         private static string _appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         /// <summary>
-        /// путь к сохраняемой папке
+        /// Путь к сохраняемой папке.
         /// </summary>
-        private static string _docPath = $"{_appDataPath}\\Pchelnik\\ContactsApp";
+        private static string _folderPath = $"{_appDataPath}\\Pchelnik\\ContactsApp";
 
         /// <summary>
-        /// путь к сохраняемому файлу
+        /// Путь к сохраняемому файлу.
         /// </summary>
-        private static string _filePath = _docPath + "\\ContactsApp.notes";
+        private static string _filePath = _folderPath + "\\ContactsApp.notes";
 
         /// <summary>
-        /// Сохраняет проект по пути _docPath
+        /// Сохраняет проект по пути _folderPath.
         /// </summary>
         /// <param name="project"></param>
         public void SaveProject(Project project)
         {
-            if (!Directory.Exists(_docPath))
+            if (!Directory.Exists(_folderPath))
             {
-                Directory.CreateDirectory(_docPath);
+                Directory.CreateDirectory(_folderPath);
             }
             if (!File.Exists(_filePath)) 
             {
@@ -39,7 +39,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Загружает данные из пути _docPath
+        /// Загружает данные из пути _folderPath.
         /// </summary>
         /// <returns></returns>
         public Project LoadProject()
