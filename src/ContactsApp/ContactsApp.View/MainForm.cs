@@ -15,7 +15,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Лист с контактами для отображения в приложении.
         /// </summary>
-        private List<Contact> _curentContacts = new List<Contact>();
+        private List<Contact> _currentContacts = new List<Contact>();
 
         /// <summary>
         /// Объект для сохранения и загрузки Project.
@@ -37,8 +37,8 @@ namespace ContactsApp.View
         {
             ContactsListBox.Items.Clear();
             var findedContacts = _project.SearchContacts(FindTextBox.Text);
-            _curentContacts = _project.SortContacts(findedContacts);
-            foreach (var contacts in _curentContacts)
+            _currentContacts = _project.SortContacts(findedContacts);
+            foreach (var contacts in _currentContacts)
             {
                 ContactsListBox.Items.Add(contacts.FullName);
             }
@@ -69,7 +69,7 @@ namespace ContactsApp.View
         /// <param name="index"></param>
         private void UpdateSelectedContact(int index)
         {
-            Contact contact = _curentContacts[index];
+            Contact contact = _currentContacts[index];
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.Email;
             PhoneNumberTextBox.Text = contact.PhoneNumber;
@@ -122,15 +122,15 @@ namespace ContactsApp.View
                 return;
             }
             string message = "Do you really want to remove " +
-                _curentContacts[selectedIndex].FullName + "?";
+                _currentContacts[selectedIndex].FullName + "?";
             DialogResult result;
             result = MessageBox.Show(message, "", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
 
-                _project.Contacts.Remove(_curentContacts[selectedIndex]);
+                _project.Contacts.Remove(_currentContacts[selectedIndex]);
                 selectedIndex = -1;
-                _curentContacts = _project.Contacts;
+                _currentContacts = _project.Contacts;
             }
 
         }
@@ -145,7 +145,7 @@ namespace ContactsApp.View
             {
                 return;
             }
-            var selectedContact = _curentContacts[selectedIndex];
+            var selectedContact = _currentContacts[selectedIndex];
             var form = new ContactForm();
             form.Contact = (Contact)selectedContact.Clone();
             form.ShowDialog();
@@ -228,7 +228,7 @@ namespace ContactsApp.View
 
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
-            _curentContacts = _project.SearchContacts(FindTextBox.Text);
+            _currentContacts = _project.SearchContacts(FindTextBox.Text);
             UpdateListBox();
         }
 
@@ -241,7 +241,7 @@ namespace ContactsApp.View
                 var contact = form.Contact;
                 _project.Contacts.Add(contact);
             }
-            _curentContacts = _project.Contacts;
+            _currentContacts = _project.Contacts;
             //Убрать добавление рандомного контакта в отдельный класс
             //AddContact();
             UpdateListBox();
