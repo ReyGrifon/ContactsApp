@@ -8,17 +8,17 @@ namespace ContactsApp.View
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Project С контактами.
+        /// Project РЎ РєРѕРЅС‚Р°РєС‚Р°РјРё.
         /// </summary>
         private Project _project = new Project();
 
         /// <summary>
-        /// Лист с контактами для отображения в приложении.
+        /// Р›РёСЃС‚ СЃ РєРѕРЅС‚Р°РєС‚Р°РјРё РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РїСЂРёР»РѕР¶РµРЅРёРё.
         /// </summary>
         private List<Contact> _currentContacts = new List<Contact>();
 
         /// <summary>
-        /// Объект для сохранения и загрузки Project.
+        /// РћР±СЉРµРєС‚ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ Рё Р·Р°РіСЂСѓР·РєРё Project.
         /// </summary>
         private ProjectManager _projectManager = new ProjectManager();
 
@@ -31,7 +31,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обновление ListBox.
+        /// РћР±РЅРѕРІР»РµРЅРёРµ ListBox.
         /// </summary>
         private void UpdateListBox()
         {
@@ -45,7 +45,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обновление панели BirthdayPanel fullName именинников.
+        /// РћР±РЅРѕРІР»РµРЅРёРµ РїР°РЅРµР»Рё BirthdayPanel fullName РёРјРµРЅРёРЅРЅРёРєРѕРІ.
         /// </summary>
         private void UpdateBirthdayContacts()
         {
@@ -64,7 +64,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обновление информационных полей соответсвенно выбранному контакту.
+        /// РћР±РЅРѕРІР»РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹С… РїРѕР»РµР№ СЃРѕРѕС‚РІРµС‚СЃРІРµРЅРЅРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РєРѕРЅС‚Р°РєС‚Сѓ.
         /// </summary>
         /// <param name="index"></param>
         private void UpdateSelectedContact(int index)
@@ -79,7 +79,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Очищение информационных полей при отсутсвии выбранного контакта.
+        /// РћС‡РёС‰РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹С… РїРѕР»РµР№ РїСЂРё РѕС‚СЃСѓС‚СЃРІРёРё РІС‹Р±СЂР°РЅРЅРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р°.
         /// </summary>
         private void ClearSelectedObject()
         {
@@ -90,18 +90,18 @@ namespace ContactsApp.View
             VKTextBox.Text = "";
         }
 
-        //TODO: убрать в отдельный класс
+        //TODO: СѓР±СЂР°С‚СЊ РІ РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ
         /// <summary>
-        /// Добавление случайного контакта.
+        /// Р”РѕР±Р°РІР»РµРЅРёРµ СЃР»СѓС‡Р°Р№РЅРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р°.
         /// </summary>
         private void AddContact()
         {
             var random = new Random();
-            string[] names = { "сергей", "николай", "хидетака", "гейб","фил",
-                "хидео","тодд","кан","алексей" };
+            string[] names = { "СЃРµСЂРіРµР№", "РЅРёРєРѕР»Р°Р№", "С…РёРґРµС‚Р°РєР°", "РіРµР№Р±","С„РёР»",
+                "С…РёРґРµРѕ","С‚РѕРґРґ","РєР°РЅ","Р°Р»РµРєСЃРµР№" };
 
-            string[] surnames = { "буянов", "ньюэлл", "кодзима", "спенсер",
-                "иванов", "кирпечёв", "котик","ларкин", "Петров" };
+            string[] surnames = { "Р±СѓСЏРЅРѕРІ", "РЅСЊСЋСЌР»Р»", "РєРѕРґР·РёРјР°", "СЃРїРµРЅСЃРµСЂ",
+                "РёРІР°РЅРѕРІ", "РєРёСЂРїРµС‡С‘РІ", "РєРѕС‚РёРє","Р»Р°СЂРєРёРЅ", "РџРµС‚СЂРѕРІ" };
 
             Project project = new Project();
             string fullName = names[random.Next(names.Length)] + " " +
@@ -112,7 +112,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Удаление контакта.
+        /// РЈРґР°Р»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚Р°.
         /// </summary>
         private void RemoveContact()
         {
@@ -136,7 +136,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Редактирование контакта.
+        /// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅС‚Р°РєС‚Р°.
         /// </summary>
         private void EditContact()
         {
@@ -158,7 +158,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Закрытие панели с именниками.
+        /// Р—Р°РєСЂС‹С‚РёРµ РїР°РЅРµР»Рё СЃ РёРјРµРЅРЅРёРєР°РјРё.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -168,7 +168,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Редактирование контакта.
+        /// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅС‚Р°РєС‚Р°.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -182,7 +182,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Удаление выбранного контакта.
+        /// РЈРґР°Р»РµРЅРёРµ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р°.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -195,7 +195,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Изменение информации в полях справа при изменении поля ListBox.
+        /// РР·РјРµРЅРµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё РІ РїРѕР»СЏС… СЃРїСЂР°РІР° РїСЂРё РёР·РјРµРЅРµРЅРёРё РїРѕР»СЏ ListBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -210,7 +210,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Предупреждение для закрытия формы.
+        /// РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РґР»СЏ Р·Р°РєСЂС‹С‚РёСЏ С„РѕСЂРјС‹.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -242,7 +242,7 @@ namespace ContactsApp.View
                 _project.Contacts.Add(contact);
             }
             _currentContacts = _project.Contacts;
-            //Убрать добавление рандомного контакта в отдельный класс
+            //РЈР±СЂР°С‚СЊ РґРѕР±Р°РІР»РµРЅРёРµ СЂР°РЅРґРѕРјРЅРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р° РІ РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ
             //AddContact();
             UpdateListBox();
             _projectManager.SaveProject(_project);
