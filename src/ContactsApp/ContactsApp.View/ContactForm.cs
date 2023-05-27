@@ -50,10 +50,7 @@ namespace ContactsApp.View
         /// </summary>
         public Contact Contact
         { 
-            get 
-            { 
-                return _contact; 
-            }
+            get => _contact;
             set
             {
                 _contact = value;

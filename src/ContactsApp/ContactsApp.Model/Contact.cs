@@ -105,10 +105,7 @@ namespace ContactsApp.Model
         /// </summary>
         public string VkId
         {
-            get 
-            { 
-            return _vkId;
-            }
+            get => _vkId;
             set 
             {
                 if (value.Length == 0)
@@ -147,7 +144,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Конструктор создания экземпляра класса Contaact.
+        /// Конструктор создания экземпляра класса Contact.
         /// </summary>
         /// <param name="fullName"></param>
         /// <param name="dateOfBirth"></param>
@@ -163,6 +160,11 @@ namespace ContactsApp.Model
             Email = email;
         }
 
+        public Contact()
+        {
+            
+        }
+        
         /// <summary>
         /// Клонирование контакта.
         /// </summary>

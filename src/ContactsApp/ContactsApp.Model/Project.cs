@@ -17,7 +17,7 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public List<Contact> SearchContacts(string query)
+        public List<Contact> FindContacts(string query)
         {
             if(query == null)
             {
@@ -49,15 +49,15 @@ namespace ContactsApp.Model
         /// <returns></returns>
         public List<Contact> FindByBirthday(DateTime time)
         {
-            List<Contact> BirhdayContacts = new List<Contact>();
+            List<Contact> birhdayContacts = new List<Contact>();
             foreach (Contact contact in Contacts)
             {
                 if (contact.DateOfBirth.ToString("dd.MM") == time.ToString("dd.MM"))
                 {
-                    BirhdayContacts.Add(contact);
+                    birhdayContacts.Add(contact);
                 }
             }
-            return BirhdayContacts;
+            return birhdayContacts;
         }
     }
 }

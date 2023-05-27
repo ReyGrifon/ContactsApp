@@ -36,7 +36,7 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
-            var findedContacts = _project.SearchContacts(FindTextBox.Text);
+            var findedContacts = _project.FindContacts(FindTextBox.Text);
             _currentContacts = _project.SortContacts(findedContacts);
             foreach (var contacts in _currentContacts)
             {
@@ -88,27 +88,6 @@ namespace ContactsApp.View
             PhoneNumberTextBox.Text = "";
             DateOfBirthTextBox.Text = "";
             VKTextBox.Text = "";
-        }
-
-        //TODO: убрать в отдельный класс
-        /// <summary>
-        /// Добавление случайного контакта.
-        /// </summary>
-        private void AddContact()
-        {
-            var random = new Random();
-            string[] names = { "сергей", "николай", "хидетака", "гейб","фил",
-                "хидео","тодд","кан","алексей" };
-
-            string[] surnames = { "буянов", "ньюэлл", "кодзима", "спенсер",
-                "иванов", "кирпечёв", "котик","ларкин", "Петров" };
-
-            Project project = new Project();
-            string fullName = names[random.Next(names.Length)] + " " +
-                surnames[random.Next(surnames.Length)];
-            Contact contact = new Contact(fullName, DateTime.Today, "8(123)000-45-67",
-                "dsfsdfsds", "GoodPerson@gmail.com");
-            _project.Contacts.Add(contact);
         }
 
         /// <summary>
@@ -228,7 +207,7 @@ namespace ContactsApp.View
 
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentContacts = _project.SearchContacts(FindTextBox.Text);
+            _currentContacts = _project.FindContacts(FindTextBox.Text);
             UpdateListBox();
         }
 
