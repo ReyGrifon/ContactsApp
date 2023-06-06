@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 namespace ContactsApp.Model
 {
     /// <summary>
-    /// Информационны класс Контакт.
+    /// Информационный класс Контакт.
     /// </summary>
     public class Contact : ICloneable
     {
