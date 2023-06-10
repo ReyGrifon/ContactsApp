@@ -156,7 +156,7 @@ namespace ContactsApp.View
             var index = ContactsListBox.SelectedIndex;
             EditContact();
             UpdateListBox();
-            UpdateSelectedContact(index);
+            ClearSelectedObject();
             _projectManager.SaveProject(_project);
         }
 

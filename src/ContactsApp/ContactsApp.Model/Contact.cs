@@ -75,7 +75,7 @@ namespace ContactsApp.Model
             {
                 if (value.Year < 1900 || value > DateTime.Today)
                 {
-                    throw new ArgumentException("Year of birth can't be curent year and before 1900");
+                    throw new ArgumentException("Year of birth can't be current year and before 1900");
                 }
                 _dateOfBirth = value;
             }
@@ -110,7 +110,7 @@ namespace ContactsApp.Model
             {
                 if (value.Length == 0)
                 {
-                    throw new ArgumentException("VK ID can't be eqal than 0 symbols");
+                    throw new ArgumentException("VK ID can't be equal than 0 symbols");
                 }
                 if (value.Length > 50)
                 {
